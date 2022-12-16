@@ -220,6 +220,12 @@ class ExportUnityFbx(Operator, ExportHelper):
 		default=False,
 	)
 
+	selected_objects: BoolProperty(
+		name="Selected Objects Only",
+		description="Export selected objects only. May be combined with Active Collection Only.",
+		default=False,
+	)
+
 	deform_bones: BoolProperty(
 		name="Only Deform Bones",
 		description="Only write deforming bones (and non-deforming ones when they have deforming children)",
@@ -241,7 +247,7 @@ class ExportUnityFbx(Operator, ExportHelper):
 					('-Y', "-Y Axis", ""),
 					('-Z', "-Z Axis", ""),
 					),
-			default='X',
+			default='Y',
 			)
 	secondary_bone_axis: EnumProperty(
 			name="Secondary Bone Axis",
