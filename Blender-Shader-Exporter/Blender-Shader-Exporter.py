@@ -37,6 +37,7 @@ class TextureSet():
     alpha = Texture()
     metal = Texture()
     roughness = Texture()
+    specular = Texture()
     normal = Texture()
     subsurface = Texture()
 
@@ -48,6 +49,7 @@ class TextureSet():
             - diffuse
             - alpha
             - roughness
+            - specular
             - metal
             - normal
             - subsurface
@@ -72,6 +74,9 @@ class TextureSet():
         elif (texturemap.lower().__contains__("roughness")):
             self.roughness = newTexture
 
+        elif (texturemap.lower().__contains__("specular")):
+            self.specular = newTexture
+
         elif (texturemap.lower() .__contains__("metal")):
             self.metal = newTexture
 
@@ -85,7 +90,7 @@ class TextureSet():
     def serialize(self):
         """ returns a dict of variable - names:value"""
         dict = {"map_diffuse": self.diffuse.__dict__, "map_alpha": self.alpha.__dict__, "map_roughness": self.roughness.__dict__,
-                "map_metal": self.metal.__dict__, "map_normal": self.normal.__dict__, "map_subsurface": self.subsurface.__dict__}
+                "map_specular": self.specular.__dict__, "map_metal": self.metal.__dict__, "map_normal": self.normal.__dict__, "map_subsurface": self.subsurface.__dict__}
 
         return dict
 
@@ -97,6 +102,7 @@ class Materialvalues:
     alpha = 0
     metal = 0
     roughness = 0
+    specular = 0
     normal = 0
     subsurface = 0
 
@@ -108,7 +114,7 @@ class Materialvalues:
             - diffuse
             - alpha
             - roughness
-
+            - specular
             - metal
             - normal
             - subsurface
@@ -128,6 +134,9 @@ class Materialvalues:
         elif (valuename.lower().__contains__("roughness")):
             self.roughness = value
 
+        elif (valuename.lower().__contains__("specular")):
+            self.specular = value
+
         elif (valuename.lower() .__contains__("metal")):
             self.metal = value
 
@@ -141,7 +150,7 @@ class Materialvalues:
     def serialize(self):
         """ returns a dict of variable - names:value"""
         dict = {"val_diffuse": self.diffuse, "val_alpha": self.alpha, "val_roughness": self.roughness,
-                "val_metal": self.metal, "val_normal": self.normal, "val_subsurface": self.subsurface}
+                "val_specular": self.specular, "val_metal": self.metal, "val_normal": self.normal, "val_subsurface": self.subsurface}
         return dict
     pass
 
@@ -281,7 +290,7 @@ class MaterialExporter:
             """
             Returns the name of the other Socket 
             """
-            return Socket.links[0].from_socket.node
+            return Socket.links[0].from_socket.name
 
         def get_node_Texture(node):
             """ 
