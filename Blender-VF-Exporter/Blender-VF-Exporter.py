@@ -288,7 +288,7 @@ class vfDeliverySettings(bpy.types.PropertyGroup):
 			('STL', 'STL — 3D Printing', 'Export individual STL file of each selected object for 3D printing'),
 			('CSV', 'CSV — Position', 'Export CSV file of the selected object\'s position for all frames within the render range')
 			],
-		default='STL')
+		default='FBX')
 	file_location: bpy.props.StringProperty(
 		name="Delivery Location",
 		description="Delivery location for all exported files",
