@@ -166,6 +166,7 @@ class AR_PT_import_main(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
         layout.use_property_split = True
+        layout.use_property_decorate = True
         sfile = context.space_data
         operator = sfile.active_operator
         row = layout.row(align=True)
